@@ -41,6 +41,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Style guides and best practices gems for development
+  gem 'erb_lint', require: false
+  gem 'overcommit', require: false
+  gem 'rails_best_practices'
+  gem 'rubocop', require: false
+  gem 'image_optim', require: false
+  gem 'image_optim_pack', require: false
+  gem 'yard'
 end
 
 group :test do
