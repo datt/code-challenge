@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  model:
+    save: "%{model} with name %{identity} saved successfully!"
+    destroy: "%{model} with name %{identity} destroyed successfully!"
+    not_found: "%{model} not found with %{id}"
+    confirm: "Are you sure you want to delete '%{identity}' %{model}? This can't be undone."
+    create: "Create %{model}"
+    no_records: "No %{model} found."
+    error:
+      delete: "Sorry! But there was an error while deleting the %{model}."

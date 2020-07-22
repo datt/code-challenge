@@ -58,4 +58,12 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_equal "28173", last_company.zip_code
   end
 
+  test "Destroy the company" do
+    assert_difference("Company.count", -1) do
+      delete company_url(@company)
+    end
+
+    assert_redirected_to companies_path
+  end
+
 end

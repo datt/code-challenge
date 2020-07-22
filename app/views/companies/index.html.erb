@@ -1,14 +1,22 @@
 <div class="container py-5">
   <h3>Companies</h3>
-  <%= link_to "+ Create a Company", new_company_path %><br>
+  <%= link_to t('model.create', { model: 'Company' }), new_company_path, class: 'btn btn-primary' %><br>
   <% if @companies.empty? %>
-  <p>No Companies Found</p>
+  <p><%= t('model.no_records', { model: 'Company' }) %></p>
   <% else %>
-    <ul class="list-group my-5">
+    <ul class="list-group my-5 unstyled">
       <% @companies.each do |company| %>
-        <a href="<%= company_path(company) %>" class="list-group-item list-group-item-action">
-          <%= company.name %>
-        </a>
+        <!-- Commenting in HTML to just to convey, we must not have comments in html for better speed -->
+        <!-- ul must have 'li' elements, bootstrap table is better to show list though-->
+        <li class="list-group-item list-group-item-action">
+          <%= link_to company.name, company_path(company) %>
+
+          <!-- It's better to have delete and edit in listing, to reduce 1 extra user interaction.  -->
+          <div class='float-right'>
+            <%= link_to 'Edit', edit_company_path(company) %>
+            <%= link_to 'Delete', company_path(company),  method: :delete, data: { confirm: t('model.confirm', { model: 'Company', identity:  company.name } ) }  %>
+          </div>
+        </li>
       <% end %>
     </ul>
   <% end %>
