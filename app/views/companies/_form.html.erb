@@ -1,4 +1,17 @@
 <div class="py-5">
+
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_for @company do |f| %>
 
     <div class="row my-lg-3">
@@ -12,14 +25,13 @@
       </div>
     </div>
 
-
     <div class="row my-lg-3">
       <div class="col-lg-3">
         <label><strong>Zip Code</strong><br><small class="text-muted">5 Digit US postal code</small></label>
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :zip_code, class: "form-control", placeholder: "93003", required: true %>
+          <%= f.text_field :zip_code, class: "form-control", placeholder: "93003", required: true, pattern: '\d{5}'  %>
         </div>
       </div>
     </div>
@@ -35,14 +47,13 @@
       </div>
     </div>
 
-
     <div class="row my-lg-3">
       <div class="col-lg-3">
         <label><strong>Phone</strong><br><small class="text-muted">Shown in marketing</small></label>
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :phone, class: "form-control", placeholder: "555-555-5555"%>
+          <%= f.text_field :phone, class: "form-control", placeholder: "555-555-5555", required: true, pattern: PhoneValidator::PHONE_REGEX.source %>
         </div>
       </div>
     </div>
@@ -53,11 +64,10 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@getmainstreet.com", pattern: CompanyEmailValidator::CO_EMAIL_REGEX.source  %>
         </div>
       </div>
     </div>
-
 
     <div class="row my-lg-3">
       <div class="col">

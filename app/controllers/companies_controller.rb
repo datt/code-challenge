@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :fetch_company, except: [:index, :create, :new]
+  before_action :fetch_company, except: [:index, :create, :new, :destroy]
 
   def index
     @companies = Company.all
@@ -40,7 +40,8 @@ class CompaniesController < ApplicationController
     if @company.destroy
       redirect_to_index('destroy')
     else
-      redirect_to company_path(@company), notice: t('model.error.delete', model_i18n_keys)
+      redirect_to company_path(@company), \
+        notice: t('model.error.delete', model_i18n_keys)
     end
   end
 
@@ -76,9 +77,9 @@ class CompaniesController < ApplicationController
   # @return [Hash] with keys used in translation file
   def model_i18n_keys
     # used memoization
-    @i18n_keys ||= {
+    @model_i18n_keys ||= {
       model: 'Company',
-      identity:  @company.name
+      identity: @company.name
     }
   end
 end

@@ -36,7 +36,13 @@ en:
     destroy: "%{model} with name %{identity} destroyed successfully!"
     not_found: "%{model} not found with %{id}"
     confirm: "Are you sure you want to delete '%{identity}' %{model}? This can't be undone."
-    create: "Create %{model}"
+    create: "+ Create %{model}"
     no_records: "No %{model} found."
     error:
       delete: "Sorry! But there was an error while deleting the %{model}."
+
+  activerecord:
+    errors:
+      messages:
+        company_email: ': Your email domain must have getmainstreet e.g. abc@getmainstreet.com'
+        phone: ': Phone numbers must be in xxx-xxx-xxxx format.'
