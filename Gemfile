@@ -28,6 +28,7 @@ gem 'zip-codes'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'active_decorator', github: 'amatsuda/active_decorator', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +58,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Update minitest - https://stackoverflow.com/questions/60997436/simple-rails-minitest-case-blowing-up
+  gem 'minitest', '5.13.0'
   gem 'minitest-reporters'
 end
 

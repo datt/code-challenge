@@ -42,4 +42,27 @@ class CompanyTest < ActiveSupport::TestCase
   end
   # Similarly phone validation can be added.
 
+  test "must not save if invalid zip code" do
+    @company.zip_code = "00000"
+    assert_not @company.save
+  end
+
+  test "must save if valid zipcode" do
+    @company.save
+    assert_not_nil @company.city
+    assert_not_nil @company.state
+  end
+
+  test "must update city and state when zip_code updated" do
+    @company.save
+    old_city = @company.city
+    old_state = @company.state
+
+    @company.zip_code = "93003"
+    @company.save
+
+    assert_not_equal  old_city, @company.city
+    assert_not_equal  old_state, @company.state
+  end
+
 end

@@ -14,7 +14,7 @@
           <!-- It's better to have delete and edit in listing, to reduce 1 extra user interaction.  -->
           <div class='float-right'>
             <%= link_to 'Edit', edit_company_path(company) %>
-            <%= link_to 'Delete', company_path(company),  method: :delete, data: { confirm: t('model.confirm', { model: 'Company', identity:  company.name } ) }  %>
+            <%= link_to 'Delete', company_path(company), class: 'text-danger',  method: :delete, data: { confirm: t('model.confirm', { model: 'Company', identity:  company.name } ) }  %>
           </div>
         </li>
       <% end %>
