@@ -24,6 +24,12 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_text "City, State"
   end
 
+  test "Show company with invalid record" do
+    visit company_path(id: 'abc9899fshs23$')
+    model_and_id = { model: 'company', id: 'abc9899fshs23$'}
+    assert_text I18n.t('model.not_found', model_and_id)
+  end
+
   test "Update" do
     visit edit_company_path(@company)
 

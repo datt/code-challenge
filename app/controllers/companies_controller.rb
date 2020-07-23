@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
   before_action :fetch_company, except: [:index, :create, :new, :destroy]
 
+  # @todo Pagination must be applied
+  # can use ransack gem for overall search and pagination functionalities
   def index
     @companies = Company.all
   end
